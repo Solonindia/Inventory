@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        div {
+            margin-bottom: 20px;
+        }
+
+        a {
+            display: block;
+            font-size: 24px;
+            text-align: center;
+            text-decoration: none;
+            color: #ffffff;
+            padding: 15px;
+            background-color: #4CAF50;
+            width: 200px;
+            border-radius: 8px;
+            margin: 10px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        a:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        b {
+            font-weight: bold;
+        }
+
+        a:active {
+            background-color: #388E3C;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <a href="{% url 'login1' %}"><b>Admin</b></a>
+    </div>
+    <div>
+        <a href="{% url 'login' %}"><b>User</b></a>
+    </div>
+</body>
+</html>

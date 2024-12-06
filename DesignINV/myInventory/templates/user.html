@@ -1,0 +1,47 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <style>
+        
+    </style>    
+</head>
+<body>
+    <div class="background"></div>
+    
+    <div class="menu-bar"> 
+        <a href="{% url 'upload_inventory' %}"><h3>Inventory</h3></a> 
+        <a href="{% url 'edit_inventory' site_name=site_name %}"><h3>Edit Inventory</h3></a>       
+        <a href="{% url 'home' %}"><h3>Home</h3></a>
+    </div>    
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <style>
+        /* Style your page here */
+    </style>    
+</head>
+<body>
+    <div class="background"></div>
+    
+    <div class="menu-bar"> 
+        <!-- <a href="{% url 'upload_inventory' %}"><h3>Inventory</h3></a>  -->
+        {% if site_name %}
+            <a href="{% url 'edit_inventory' site_name=site_name %}"><h3>Edit Inventory for {{ site_name }}</h3></a>
+        {% else %}
+            <p>No sites available for editing inventory.</p>
+        {% endif %}
+        <a href="{% url 'inventory_history' site_name=site_name %}"><h3>Inventory Result</h3></a>
+        <a href="{% url 'home' %}"><h3>Home</h3></a>
+    </div>    
+</body>
+</html>

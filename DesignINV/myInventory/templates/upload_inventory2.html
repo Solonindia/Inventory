@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Inventory</title>
+</head>
+<body>
+    <h2>Upload Inventory</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="file">Upload Excel File:</label>
+        <input type="file" name="file" accept=".xls,.xlsx" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if excel_data %}
+        <h3>Data Preview</h3>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Material Code</th>
+                    <th>Material Description</th>
+                    <th>Owner</th>
+                    <th>Type</th>
+                    <th>Category</th>
+                    <th>Opening Stock</th>
+                    
+                    <th>Consumption</th>
+                    <th>Closing Stock</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in excel_data %}
+                    <tr>
+                        <td>{{ row.0 }}</td>  <!-- Material Code -->
+                        <td>{{ row.1 }}</td>  <!-- Material Description -->
+                        <td>{{ row.2 }}</td>  <!-- Owner -->
+                        <td>{{ row.3 }}</td>  <!-- Consumption -->
+                        <td>{{ row.4 }}</td>  <!-- Closing Stock -->
+                        <td>{{ row.5 }}</td>
+                        <td>{{ row.6 }}</td>
+                        <td>{{ row.7 }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</body>
+</html>
